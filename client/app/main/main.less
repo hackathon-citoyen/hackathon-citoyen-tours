@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+}
+
+.main-page-unicolumn() {
+  .make-xs-column(10);
+  .make-xs-column-offset(1);
+  .make-md-column(8);
+  .make-md-column-offset(2);
+  .make-lg-column(6);
+  .make-lg-column-offset(3);
+}
+
+.expl-unit {
+  .main-page-unicolumn();
+  font-size: 1.5em;
+  text-align: justify;
+  padding-top: 2em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.landing-email-form {
+  .main-page-unicolumn();
+  margin: 8px 0 16px;
+  input[type=email] {
+    font-size: large;
+    color: black;
+  }
+  box-sizing: content-box;
+}
+
+.landing-email-modal {
+  .modal-content();
+  color: black;
+  text-align: left;
+
+  .landing-email-modal-footer {
+    .modal-footer();
+    margin-top: 0;
+  }
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}

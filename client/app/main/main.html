@@ -1,0 +1,115 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+
+<div class="hero-unit">
+
+  <!-- Modal -->
+  <div class="modal fade" id="email-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="landing-email-modal">
+        <div class="modal-body">
+          <p> En nous donnant votre adresse mail, nous vous tiendrons informé des nouveautés concernant le Hackathon Citoyen.
+          <p> Votre adresse mail ne sera utilisé à aucune autre fin, et vous pourrez vous désinscrire à tout moment.
+          <p> Nous enverrons au maximum un courrier par mois.
+        </div>
+        <div class="landing-email-modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Je suis rassuré !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="email-sub-error" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="landing-email-modal">
+        <div class="modal-body">
+          <div>
+            <p> Une erreur s'est produite en enregistrant votre adresse mail.
+          </div>
+        </div>
+        <div class="landing-email-modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+    <div class="landing-email-form">
+      <div ng-show="emailRegistered" ng-cloak>
+        Votre inscription à notre newsletter a bien été enregistrée&nbsp;!
+        <p>
+        Vous allez recevoir un message vous demandant de confirmer votre adresse (pensez à vérifier dans vos spams), vous ne serez
+        inscrit qu'après cette confirmation de votre part.
+      </div>
+      <div ng-hide="emailRegistered">
+        <h3>Restez en contact avec nous&nbsp;!</h3>
+
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">@</span>
+          <input type="email" ng-model="emailData.address"  class="form-control" placeholder="votre@email.fr" aria-describedby="basic-addon1">
+          <span class="input-group-btn" dropdown >
+            <button type="button" class="btn btn-info dropdown-toggle" >
+              {{ emailData.type.label }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="item in emailOptions.types" ng-click="emailData.type=item"><a href="#">{{ item.choiceLabel }}</a></li>
+            </ul>
+          </span>
+        </div>
+
+        <div style="margin-top: 8px;">
+          <button type="submit" class="btn btn-success btn-lg" ng-click="subscribeNewsletter()" ng-disabled="!emailData.address || emailData.processing" >
+            <span class="glyphicon glyphicon-envelope"></span>
+            Tenez-moi informé&nbsp;!
+          </button>
+
+          <button class="btn btn-xs btn-link" data-toggle="modal"  data-target="#email-info"><span class="glyphicon glyphicon-question-sign glyphicon-" aria-hidden="true"></span></button>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="expl-unit">
+      <p>
+      Un hackathon citoyen est un événement où des développeurs, des designers et des spécialistes du numérique se réunissent bénévolement pour concevoir et réaliser des projets numériques collaboratifs et participatifs pour des associations et des établissements publics.
+
+      <p>
+      Les associations auront l'occasion de présenter leurs projets et leurs besoins aux organisateurs afin d'être potentiellement sélectionnés.
+
+      <p>
+      Une réunion d'information aura lieu le 23 juin 2015 à la pépinière du sanitas.
+      Vous pourrez déposer vos projets sur le site web xxxxx. Jusqu'à 10 projets seront sélectionnés !
+      Les participants auront deux jours pour réaliser votre projet.
+
+      <p>
+      Associations: si vous souhaitez participer et proposer un projet vous permettant de faciliter votre travail, votre communication, ou la gestion de vos activités, rendez-vous sur le sitetours.hackathon-citoyen.fr
+
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container" style="display: none;">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  </div>
+</footer>
