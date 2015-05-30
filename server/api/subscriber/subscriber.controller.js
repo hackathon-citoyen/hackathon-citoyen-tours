@@ -30,6 +30,9 @@ exports.create = function(req, res) {
     return res.json(201, data);
   }
 
+  returnStatus(null,{});
+  return;
+
   Subscriber.create(req.body, function(err, subscriber) {
     if (!err) {
       mailchimp.subscribe(req.body.email, function(err,result) {

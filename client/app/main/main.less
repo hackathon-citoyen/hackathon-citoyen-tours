@@ -1,7 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import "../bower_components/bootstrap/less/jumbotron";
 
-.thing-form {
-  margin: 20px 0;
+h1.logo-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 60px !important;
+}
+
+h2.logo-title {
+  font-weight: 400;
+  font-family: 'Pacifico', cursive;
+  font-size: 92px;
 }
 
 #banner {
@@ -21,7 +29,7 @@
     color: #F5F5F5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
+    background: @blue;
 }
 
 .main-page-unicolumn() {
@@ -38,19 +46,19 @@
 .expl-unit {
   .main-page-unicolumn();
   font-size: 1.5em;
-  text-align: justify;
+  text-align: center;
   padding-top: 2em;
   font-family: 'Open Sans', sans-serif;
 }
 
 .landing-email-form {
   .main-page-unicolumn();
-  margin: 8px 0 16px;
   input[type=email] {
     font-size: large;
-    color: black;
+    // color: white;
   }
   box-sizing: content-box;
+  margin-top: 8px;
 }
 
 .landing-email-modal {

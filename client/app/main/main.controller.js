@@ -11,7 +11,7 @@ angular.module('hackathonCitoyenApp')
         {id:"association", label: "je représente une association", choiceLabel: "Association"},
         {id:"dev", label: "Je suis développeur", choiceLabel: "Développeur"},
         {id:"designer", label: "Je suis designer, graphiste", choiceLabel: "Designer, graphiste"},
-        {id:"autre", label: "Je suis intéressé malgré tout", choiceLabel: "Autre"}
+        {id:"autre", label: "Je suis intéressé", choiceLabel: "Autre"}
       ]
     };
     $scope.emailData = {
@@ -36,7 +36,7 @@ angular.module('hackathonCitoyenApp')
         }).error(function(data,status){
           $("email-sub-error").modal('show');
           $scope.emailData.processing = false;
-        });
+          });
       } else {
         $scope.emailData.error = "L'email que vous avez saisi n'est pas valide."
       }

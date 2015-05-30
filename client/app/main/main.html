@@ -2,14 +2,11 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <img src="../../assets/images/Logo-Hackathon-Citoyen.png" style="width: 350px;" alt="I'm Yeoman">
   </div>
 </header>
 
-
-<div class="hero-unit">
+<div class="jumbotron"  style="padding: 0px;">
 
   <!-- Modal -->
   <div class="modal fade" id="email-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -42,41 +39,49 @@
     </div>
   </div>
 
-
   <div class="container">
     <div class="row">
     <div class="landing-email-form">
-      <div ng-show="emailRegistered" ng-cloak>
-        Votre inscription à notre newsletter a bien été enregistrée&nbsp;!
-        <p>
+      <div ng-show="emailRegistered" ng-cloak class="alert alert-info">
+        <h3>Votre inscription à notre newsletter a bien été enregistrée&nbsp;!</h3>
+        <brezez@>
         Vous allez recevoir un message vous demandant de confirmer votre adresse (pensez à vérifier dans vos spams), vous ne serez
         inscrit qu'après cette confirmation de votre part.
       </div>
       <div ng-hide="emailRegistered">
-        <h3>Restez en contact avec nous&nbsp;!</h3>
+        <h3 style="text-align: center;">Restez en contact avec nous&nbsp;!</h3>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">@</span>
-          <input type="email" ng-model="emailData.address"  class="form-control" placeholder="votre@email.fr" aria-describedby="basic-addon1">
-          <span class="input-group-btn" dropdown >
-            <button type="button" class="btn btn-info dropdown-toggle" >
-              {{ emailData.type.label }} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="item in emailOptions.types" ng-click="emailData.type=item"><a href="#">{{ item.choiceLabel }}</a></li>
-            </ul>
-          </span>
+        <div ng-if="emailData.error" class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ emailData.error }}
         </div>
 
-        <div style="margin-top: 8px;">
-          <button type="submit" class="btn btn-success btn-lg" ng-click="subscribeNewsletter()" ng-disabled="!emailData.address || emailData.processing" >
-            <span class="glyphicon glyphicon-envelope"></span>
-            Tenez-moi informé&nbsp;!
-          </button>
+        <form class="form-horizontal">
+          <div class="form-group" style="text-align: center;">
+            <div style="display: inline-block;">
+              <input type="email" ng-model="emailData.address" class="form-control floating-label input-lg" placeholder="votre@email.fr" aria-describedby="basic-addon1" data-hint="votre email">
+            </div>
+            <div style="display: inline-block;">
+              <div class="btn-group" style="text-align: left;">
+                <a href="javascript:void(0)" class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{ emailData.type.label }}</a>
+                <a href="bootstrap-elements.html" data-target="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="item in emailOptions.types" ng-click="emailData.type=item"><a href="#">{{ item.choiceLabel }}</a></li>
+                </ul>
+              </div>
+            </div>
 
-          <button class="btn btn-xs btn-link" data-toggle="modal"  data-target="#email-info"><span class="glyphicon glyphicon-question-sign glyphicon-" aria-hidden="true"></span></button>
+            <div style="text-align: center;">
+              <button type="submit" class="btn btn-material-light-green" ng-click="subscribeNewsletter()" ng-disabled="emailData.processing" >
+                <span class="glyphicon glyphicon-envelope"></span>
+                Tenez-moi informé&nbsp;!
+              </button>
+              <button class="btn btn-xs btn-link" data-toggle="modal"  data-target="#email-info"><span class="glyphicon glyphicon-question-sign glyphicon-" aria-hidden="true"></span></button>
+            </div>
 
-        </div>
+
+          </div>
+        </form>
 
       </div>
     </div>
