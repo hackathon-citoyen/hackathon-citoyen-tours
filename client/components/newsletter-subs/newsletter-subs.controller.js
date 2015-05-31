@@ -16,9 +16,21 @@ angular.module('hackathonCitoyenApp')
       registered: false
     };
 
+    var EMAIL_RE = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
     scope.subscribeNewsletter = function() {
       scope.emailData.error = undefined;
-      if (scope.emailData.address.length) {
+
+      if (!scope.emailData.address) {
+        scope.emailData.error = "Vous devez indiquer votre adresse mail.";
+
+      } else if (!EMAIL_RE.test(scope.emailData.address)) {
+        scope.emailData.error = "L'email que vous avez saisi n'est pas valide.";
+
+      } else if (scope.emailData.type.id == "none")  {
+        $("#newsletterSubscribeDropdownType").focus();
+
+      } else {
         scope.emailData.processing = true;
         scope.emailData.error = undefined;
         $http.post('/api/subscribers', {
@@ -34,8 +46,6 @@ angular.module('hackathonCitoyenApp')
           $("email-sub-error").modal('show');
           scope.emailData.processing = false;
         });
-      } else {
-        scope.emailData.error = "L'email que vous avez saisi n'est pas valide."
       }
     };
 

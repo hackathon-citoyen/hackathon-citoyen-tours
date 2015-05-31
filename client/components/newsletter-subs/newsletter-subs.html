@@ -1,82 +1,78 @@
-<div class="jumbotron"  style="padding: 0px;" ng-cloak ng-controller="NewsletterSubsCtrl">
+<div class="card-full card-hightlight"  style="padding: 0px;" ng-cloak ng-controller="NewsletterSubsCtrl">
 
-  <!-- Modal -->
-  <div class="modal fade" id="email-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="landing-email-modal">
-        <div class="modal-body">
-          <p> En nous donnant votre adresse mail, nous vous tiendrons informé des nouveautés concernant le Hackathon Citoyen.
-          <p> Votre adresse mail ne sera utilisé à aucune autre fin, et vous pourrez vous désinscrire à tout moment.
-          <p> Nous enverrons au maximum un courrier par mois.
-        </div>
-        <div class="landing-email-modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Je suis rassuré !</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="email-sub-error" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="landing-email-modal">
-        <div class="modal-body">
-          <div>
-            <p> Une erreur s'est produite en enregistrant votre adresse mail.
-          </div>
-        </div>
-        <div class="landing-email-modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
+  <div class="container" ng-hide="newsletterSubscriptionComplete">
     <div class="row">
       <div class="landing-email-form">
-        <div ng-show="emailRegistered" ng-cloak class="alert alert-info">
+
+        <div class="newsletter-col" ng-show="newsletterInfo">
+          <div style="padding: 16px;">
+            <p> En nous donnant votre adresse mail, nous vous tiendrons informé des nouveautés concernant le Hackathon Citoyen.
+            <p> Votre adresse mail ne sera utilisé à aucune autre fin, et vous pourrez vous désinscrire à tout moment.
+          </div>
+          <div style="text-align: center;">
+            <button type="button" class="btn btn-flat" ng-click="newsletterInfo=false">Je suis rassuré !</button>
+          </div>
+        </div>
+
+        <div ng-show="emailRegistered && !newsletterInfo" ng-cloak class="alert alert-info" style="margin-top: 16px;">
+          <button type="button" class="close pull-right" ng-click="newsletterSubscriptionComplete=true">×</button>
           <h3>Votre inscription à notre newsletter a bien été enregistrée&nbsp;!</h3>
           <brezez@>
           Vous allez recevoir un message vous demandant de confirmer votre adresse (pensez à vérifier dans vos spams), vous ne serez
           inscrit qu'après cette confirmation de votre part.
         </div>
-        <div ng-hide="emailRegistered">
-          <h3 style="text-align: center;">Restez en contact avec nous&nbsp;!</h3>
 
-          <div ng-if="emailData.error" class="alert alert-dismissable alert-warning">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ emailData.error }}
+        <div ng-show="!emailRegistered  && !newsletterInfo">
+
+          <div style="text-align: center;">
+            <button class="btn btn-flat" ng-click="displayNewsletterForm=true" ng-hide="displayNewsletterForm">Restez en contact avec nous&nbsp;!</button>
           </div>
 
-          <form class="form-horizontal">
-            <div class="form-group" style="text-align: center;">
-              <div style="display: inline-block;">
-                <input type="email" ng-model="emailData.address" class="form-control floating-label input-lg" placeholder="votre@email.fr" aria-describedby="basic-addon1" data-hint="votre email">
+          <div ng-show="displayNewsletterForm">
+
+            <form class="form-horizontal newsletter-col">
+
+              <div ng-if="emailData.error" class="alert alert-dismissable alert-soft">
+                <button type="button" class="close" ng-click="emailData.error=false">×</button>
+                {{ emailData.error }}
               </div>
-              <div style="display: inline-block;">
-                <div class="btn-group" style="text-align: left;">
-                  <a href="javascript:void(0)" class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{ emailData.type.label }}</a>
-                  <a href="bootstrap-elements.html" data-target="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li ng-repeat="item in emailOptions.types" ng-click="emailData.type=item"><a href="#">{{ item.choiceLabel }}</a></li>
-                  </ul>
+
+              <div class="pull-right">
+                <a class="btn btn-flat" ng-click="newsletterInfo=true" style="position:absolute;">
+                  <img style="width:32px;" src="../../assets/images/google-material-design-icons/ic_help_black_48dp.png">
+                </a>
+              </div>
+
+              <div class="form-group" style="text-align: center;">
+
+                <div style="display: inline-block;">
+                  <input type="email" ng-model="emailData.address" class="form-control floating-label input-lg" placeholder="votre@email.fr" aria-describedby="basic-addon1" data-hint="votre email">
                 </div>
+
+                <div style="display: inline-block;">
+                  <div class="btn-group" style="text-align: left;">
+                    <a id="newsletterSubscribeDropdownType" href="javascript:void(0)" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{ emailData.type.label }}</a>
+                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li ng-repeat="item in emailOptions.types" ng-click="emailData.type=item"><a href="#">{{ item.choiceLabel }}</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div style="text-align: center;">
+                  <button type="submit" class="btn btn-flat" ng-click="subscribeNewsletter()" ng-disabled="emailData.processing" >
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    Tenez-moi informé&nbsp;!
+                  </button>
+                </div>
+
+
               </div>
-
-              <div style="text-align: center;">
-                <button type="submit" class="btn btn-material-light-green" ng-click="subscribeNewsletter()" ng-disabled="emailData.processing" >
-                  <span class="glyphicon glyphicon-envelope"></span>
-                  Tenez-moi informé&nbsp;!
-                </button>
-                <button class="btn btn-xs btn-link" data-toggle="modal"  data-target="#email-info"><span class="glyphicon glyphicon-question-sign glyphicon-" aria-hidden="true"></span></button>
-              </div>
-
-
-            </div>
-          </form>
-
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

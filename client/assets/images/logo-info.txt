@@ -1,0 +1,6 @@
+Logo was built as follows:
+- The rocket was borrowed to circle icon bundle (licence: GPL)
+- Font for HACKATHON is Montserrat Bold (48pt), color: #f5cf87
+- Font for Citoyen is Pacifico Regular (60pt), color: #a95c5c
+- Background circle is #77b3d4
+- Shadow is #000, Opacity 20%
