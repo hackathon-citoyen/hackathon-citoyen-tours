@@ -9,10 +9,13 @@
   .make-lg-column-offset(2);
 }
 
+.main {
+  .main-page-unicolumn();
+}
 
 @import 'bootstrap/less/bootstrap.less';
 @import 'font-awesome/less/font-awesome.less';
-@import "../bower_components/bootstrap-material-design/less/material-fullpalette";
+@import "../bower_components/bootstrap-material-design/less/material";
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,800);
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
@@ -43,8 +46,10 @@
 // injector
 @import 'account/login/login.less';
 @import 'admin/admin.less';
+@import 'associations/associations.less';
 @import 'cards.less';
 @import 'main/main.less';
+@import 'participants/participants.less';
 @import 'modal/modal.less';
 @import 'newsletter-subs/newsletter-subs.less';
 // endinjector

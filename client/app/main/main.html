@@ -1,10 +1,16 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <header class="logo-unit" id="banner">
   <div class="container">
     <img src="../../assets/images/Logo-Hackathon-Citoyen.png" style="width: 350px;" alt="I'm Yeoman">
   </div>
+  <div style="text-align: center; font-size: 2em;">
+    Un hackathon avec un impact social&nbsp;!
+  </div>
 </header>
+
+<div class="card-full-flat card-warning" style="text-align: center; font-size: 1.5em;">
+  C'est en octobre 2015 à Tours
+  <br> et on a besoin de vous !
+</div>
 
 <div ng-include="'components/newsletter-subs/newsletter-subs.html'"></div>
 
@@ -14,16 +20,16 @@
     <div class="expl-unit">
 
       <div>
-        Le hackathon citoyen réunit des spécialistes du numérique pour aider les
-        associations et les établissement publics à réaliser, l'espace d'un week-end, leurs projets numériques.
+        Le <i>hackathon citoyen</i> réunit des spécialistes du numérique pour aider les
+        associations locales et les établissement publics à réaliser, l'espace d'un week-end, leurs projets numériques.
       </div>
 
       <div class="row" style="margin-bottom: 16px;">
         <div class="col-sm-6">
-          <button class="btn btn-flat">
+          <a ui-sref="associations" class="btn btn-flat">
             Vous êtes une association
             <br/><img style="height: 48px;" src="../assets/images/google-material-design-icons/ic_people_black_48dp.png">
-          </button>
+          </a>
         </div>
         <div class="col-sm-6">
           <button class="btn btn-flat">
@@ -40,6 +46,18 @@
           Je m'inscris&nbsp;
           <i class="glyphicon glyphicon-bookmark" style=";"></i>
         </a>
+      </div>
+
+      <div>
+
+        <h3>Le hackathon est-il une compétition ?</h3>
+        <div>
+          Certains hackathon sont des compétitions entre développeurs, mais le hackathon citoyen n'est pas une compétition.
+          Des équipes sont montées afin de mener à bien un projet dans le temps imparti, mais l'objectif de tous les
+          participants est la réussite collective de tous les projets. Les équipes pourront s'aider mutuellement, et une
+          étude sur les points communs entre les projets aura lieu avant le démarrage pour que l'entraide entre les
+          équipes soit maximale.
+        </div>
 
       </div>
 

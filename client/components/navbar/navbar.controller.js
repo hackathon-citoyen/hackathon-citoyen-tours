@@ -3,9 +3,17 @@
 angular.module('hackathonCitoyenApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
+      'title': 'Hackathon citoyen',
       'link': '/'
-    }];
+    },{
+      'title': 'Associations',
+      'link': '/associations'
+    },{
+      'title': 'Participants',
+      'link': '/participants'
+    }
+
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
