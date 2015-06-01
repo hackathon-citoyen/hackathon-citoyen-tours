@@ -1,6 +1,6 @@
 <div class="card-full card-hightlight"  style="padding: 0px;" ng-cloak ng-controller="NewsletterSubsCtrl">
 
-  <div class="container" ng-hide="newsletterSubscriptionComplete">
+  <div class="container" ng-hide="newsletterSubscriptionComplete || !mailEnabled">
     <div class="row">
       <div class="landing-email-form">
 
@@ -17,7 +17,7 @@
         <div ng-show="emailRegistered && !newsletterInfo" ng-cloak class="alert alert-info" style="margin-top: 16px;">
           <button type="button" class="close pull-right" ng-click="newsletterSubscriptionComplete=true">×</button>
           <h3>Votre inscription à notre newsletter a bien été enregistrée&nbsp;!</h3>
-          <brezez@>
+          <br>
           Vous allez recevoir un message vous demandant de confirmer votre adresse (pensez à vérifier dans vos spams), vous ne serez
           inscrit qu'après cette confirmation de votre part.
         </div>

@@ -1,4 +1,0 @@
-hackathon-citoyen-website
-=========================
-
-init
