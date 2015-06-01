@@ -25,7 +25,7 @@ elif [ "${1:-}" == "run" ] ; then
 
   echo "Running hackathon-citoyen in Docker...";
   echo "Keys: $PARSE_ID $PARSE_KEY $MAILCHIMP_KEY"
-  docker run -p 8080:8080 \
+  docker run -d -p 8080:8080 \
     -e PARSE_ID=="${PARSE_ID:-}" \
     -e PARSE_KEY=="${PARSE_KEY:-}"\
     -e MAILCHIMP_KEY="${MAILCHIMP_KEY:-}" \
