@@ -17,6 +17,11 @@ elif [ "${1:-}" == "run" ] ; then
   [[ ! -z "${3:-}" ]] && PARSE_KEY="$3"
   [[ ! -z "${4:-}" ]] && MAILCHIMP_KEY="$4"
 
+
+  if [[ -f "$HOME/.hackathon-vars" ]] ; then
+      source "$HOME/.hackathon-vars"
+  fi
+
   if [[ -z "$PARSE_ID" || -z "$PARSE_KEY" ]] ; then
     echo "WARNING: Missing Parse configuration"
     echo "Aborted".
@@ -26,8 +31,8 @@ elif [ "${1:-}" == "run" ] ; then
   echo "Running hackathon-citoyen in Docker...";
   echo "Keys: $PARSE_ID $PARSE_KEY $MAILCHIMP_KEY"
   docker run -d -p 8080:8080 \
-    -e PARSE_ID=="${PARSE_ID:-}" \
-    -e PARSE_KEY=="${PARSE_KEY:-}"\
+    -e PARSE_ID="${PARSE_ID:-}" \
+    -e PARSE_KEY="${PARSE_KEY:-}"\
     -e MAILCHIMP_KEY="${MAILCHIMP_KEY:-}" \
     --name hackathon-citoyen hackathon-citoyen
 
@@ -36,5 +41,4 @@ else
   echo "  where COMMAND is 'build' or 'run'"
   echo "  'run' accepts three arguments: PARSE_ID PARSE_KEY MAILCHIMP_KEY"
 fi
-
 
