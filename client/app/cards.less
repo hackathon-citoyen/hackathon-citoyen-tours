@@ -24,9 +24,15 @@
 .card-red {
   background-color: darken(#c75c5c, 10%);
   color: @color2;
-  font-size: 1.2em;
+  font-size: 1.1em;
   a.btn {
     color: @color2 !important;
+    font-size: 1.2em;
+    text-decoration: none;
+  }
+  a when (!.btn) {
+    color: @color2 !important;
+    text-decoration: underline;
   }
 }
 
