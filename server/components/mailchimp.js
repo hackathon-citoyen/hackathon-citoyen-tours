@@ -2,8 +2,11 @@
 
 var MailChimpAPI = require('mailchimp').MailChimpAPI;
 
+var listId = process.env.MAILCHIMP_LIST_ID;
+
 function MailChimpHelper() {
   var key = process.env.MAILCHIMP_KEY;
+
   console.log("Mailchimp Helper, key", key);
 
   this.api = null;
@@ -31,7 +34,7 @@ MailChimpHelper.prototype.subscribe = function (email, callback) {
     console.error("Warning: Can't subscribe to the newsletter, MAILCHIMP_KEY is not set.");
     return callback(new Error("Mailchimp key not set"));
   }
-  this.api.call("lists", "subscribe", {id: "3503f0bca9", email: {email: email}}, function (err, data) {
+  this.api.call("lists", "subscribe", {id: listId, email: {email: email}}, function (err, data) {
     console.log("callback for lists/subscribe", err, data);
     callback(err, data);
   });
