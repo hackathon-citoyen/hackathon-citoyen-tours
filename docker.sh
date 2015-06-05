@@ -34,6 +34,7 @@ elif [ "${1:-}" == "run" ] ; then
     -e PARSE_ID="${PARSE_ID:-}" \
     -e PARSE_KEY="${PARSE_KEY:-}"\
     -e MAILCHIMP_KEY="${MAILCHIMP_KEY:-}" \
+    -e MAILCHIMP_LIST_ID="${MAILCHIMP_LIST_ID:-}" \
     --name hackathon-citoyen hackathon-citoyen
 
 else
