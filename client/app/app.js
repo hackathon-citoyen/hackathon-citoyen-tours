@@ -13,6 +13,9 @@ angular.module('hackathonCitoyenApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+
+    // Hard initialize of parse.
+    Parse.initialize("gxcxw9G1INtm9TMhBdTSb4nmPgy3G1llQ0GowIOk", "iBNoDRkQpSg8zCO7JLaBvMzOjKeI9OtQuROvdMxE");
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
