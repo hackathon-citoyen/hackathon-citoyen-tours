@@ -1,10 +1,13 @@
 'use strict';
 var Project = Parse.Object.extend("Projects");
 angular.module('hackathonCitoyenApp')
-  .controller('DossierCtrl', function ($scope) {
+  .controller('DossierCtrl', function ($scope, $state) {
     $scope.startProjet = function(email) {
-      console.log ('Start');
-      Parse.Cloud.run('startProject', { email: email });
+      Parse.Cloud.run('startProject', { email: email }, {
+        success: function() {
+          $state.go('dossier_ok');
+        }
+      });
     };
   }).controller('DetailsCtrl', function($stateParams, $scope) {
     $scope.pid = $stateParams.pid;

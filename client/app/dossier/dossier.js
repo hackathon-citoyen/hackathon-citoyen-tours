@@ -11,5 +11,8 @@ angular.module('hackathonCitoyenApp')
           url: '/details/:pid',
           templateUrl: 'app/dossier/details.html',
           controller: 'DetailsCtrl'
+        }).state('dossier_ok', {
+          url: '/dossier/ok',
+          templateUrl: 'app/dossier/ok.html'
         });
   });
