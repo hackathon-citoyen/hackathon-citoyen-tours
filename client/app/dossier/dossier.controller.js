@@ -9,7 +9,7 @@ angular.module('hackathonCitoyenApp')
         }
       });
     };
-  }).controller('DetailsCtrl', function($stateParams, $scope) {
+  }).controller('DetailsCtrl', function($stateParams, $scope, $timeout) {
     $scope.pid = $stateParams.pid;
     new Parse.Query(Project).get($scope.pid,{
       success: function(project) {
@@ -22,7 +22,16 @@ angular.module('hackathonCitoyenApp')
                 project.set(key, $scope.project[key]);
               }
             }
-            project.save();
+            project.save(null, {
+              success: function() {
+                $scope.$apply(function() {
+                  $scope.success = true;
+                  $timeout(function() {
+                    $scope.success = false;
+                  }, 2000)
+                })
+              }
+            });
           };
         });
       }
