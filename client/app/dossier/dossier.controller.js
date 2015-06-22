@@ -15,11 +15,10 @@ angular.module('hackathonCitoyenApp')
 
           $scope.save = function() {
             for (var key in $scope.project) {
-              console.log(key);
-              project.set(key, $scope.project[key]);
-
+              if ($scope.project.hasOwnProperty(key)){
+                project.set(key, $scope.project[key]);
+              }
             }
-            console.log(project);
             project.save();
           };
         });

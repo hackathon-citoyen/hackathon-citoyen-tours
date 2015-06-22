@@ -13,8 +13,31 @@
   <div class="main">
     {{project.email}}
     <form name="projectDetailsForm">
-      <input type="text" name="name" ng-model="project.name">
+      <div class="form-group">
+        <label for="name">Votre nom</label>
+        <input type="text" id="name" name="name" ng-model="project.name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="activity">Décrivez l'action de votre association</label>
+        <textarea type="text" id="activity" name="activity" ng-model="project.activity" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="usage">Décrivez l'utilisation du numérique dans votre association (logiciel, applications, sites, etc)</label>
+        <textarea type="text" id="usage" name="usage" ng-model="project.usage" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="project">Quel est votre besoin numérique ou le projet que vous souhaitez proposer ?</label>
+        <textarea type="text" id="project" name="project" ng-model="project.project" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="lead">Qui sera le porteur de projet de votre côté ? Il/elle devra être présent le jour de l'évènement</label>
+        <input type="text" id="lead" name="lead" ng-model="project.lead" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="gain">Décrivez les apports du projet numérique à votre association</label>
+        <textarea type="text" id="gain" name="gain" ng-model="project.gain" class="form-control" required></textarea>
+      </div>
     </form>
-    <a ng-click="save()">Enregistrer</a>
+    <button ng-click="save()" class="btn btn-info" ng-disabled="projectDetailsForm.$invalid">Enregistrer</button>
   </div>
 </div>
