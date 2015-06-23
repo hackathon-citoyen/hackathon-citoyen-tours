@@ -7,14 +7,29 @@
       </h1>
     </div>
   </div>
+
+  <style>
+    textarea {
+      background-color: #F8F8F8 !important;
+      padding: 4px !important;
+      resize:vertical;
+    }
+  </style>
 </header>
 
 <div class="container">
   <div class="main">
     <br/>
-    <div class="alert alert-success" ng-show="success">
-      Modifications bien enregistrées.
+
+    <div class="alert alert-info">
+      Remplissez ce dossier en répondant aux questions posées, en restant aussi simple et clair que possible. Si vous avez besoin d'aide
+      pour répondre aux questions, contactez-nous par mail: <a href="mailto:info@hackathon-citoyen.org">info@hackathon-citoyen.org</a>
+      <br>
+      Vous pourrez modifier ce dossier à tout moment en utilisant le lien que vous avez reçu par mail.
+      <hr>
+      Si nécessaire, nous vous recontacterons par email pour améliorer votre dossier.
     </div>
+
     <p><b>Email utilisé pour ce dossier : </b>{{project.email}}</p>
     <form name="projectDetailsForm">
       <div class="form-group">
@@ -34,16 +49,19 @@
         <textarea type="text" id="project" name="project" ng-model="project.project" class="form-control" required rows="4"></textarea>
       </div>
       <div class="form-group">
-        <label for="lead">Qui sera le porteur de projet de votre côté ? Il/elle devra être présent le jour de l'évènement</label>
+        <label for="lead">Qui sera le porteur de projet de votre côté ? Il/elle devra être présent durant la durée de l'évènement</label>
         <input type="text" id="lead" name="lead" ng-model="project.lead" class="form-control" required>
       </div>
       <div class="form-group">
         <label for="gain">Décrivez les apports du projet numérique à votre association</label>
         <textarea type="text" id="gain" name="gain" ng-model="project.gain" class="form-control" required rows="4"></textarea>
       </div>
-      <p class="alert alert-danger" ng-if="projectDetailsForm.$invalid">
-        Tous les champs du dossier sont obligatoires.
+      <p class="alert alert-warning" ng-if="projectDetailsForm.$invalid">
+        <span style="font-weight: bold;">Attention: Tous les champs du dossier sont obligatoires.</span>
       </p>
+      <div class="alert alert-success" ng-show="success">
+        Modifications bien enregistrées.
+      </div>
     </form>
     <button ng-click="save()" class="btn btn-info" ng-disabled="projectDetailsForm.$invalid">Enregistrer</button>
   </div>
