@@ -28,8 +28,8 @@ angular.module('hackathonCitoyenApp')
                   $scope.success = true;
                   $timeout(function() {
                     $scope.success = false;
-                  }, 2000)
-                })
+                  }, 2000);
+                });
               }
             });
           };
