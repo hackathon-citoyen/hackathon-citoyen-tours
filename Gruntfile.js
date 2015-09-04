@@ -614,8 +614,7 @@ module.exports = function (grunt) {
         'injector:less',
         'concurrent:test',
         'injector',
-        'autoprefixer',
-        'karma'
+        'autoprefixer'
       ]);
     }
 
