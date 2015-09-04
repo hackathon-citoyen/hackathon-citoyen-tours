@@ -62,9 +62,15 @@
 @color2: #f5cf87;
 @color1light: #FFAAAA;
 @bgcolor: #77b3d4;
+@linkcolor: darken(@bgcolor, 30%);
 
 @btn-primary-bg: @bgcolor;
 @btn-primary-color: #FFFFFF;
+
+a {
+  font-weight: bold;
+  color: @linkcolor;
+}
 
 .btn-red {
   background-color: @color2;
