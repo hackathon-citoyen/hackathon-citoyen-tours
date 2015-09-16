@@ -3,7 +3,8 @@
 angular.module('hackathonCitoyenApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Hackathon citoyen',
+      // 'title': 'Hackathon',
+      'image': "/assets/images/logo-1.png",
       'link': '/'
     },{
       'title': 'Associations',
@@ -24,11 +25,32 @@ angular.module('hackathonCitoyenApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
-      Auth.logout();
-      $location.path('/login');
+      var current = Parse.User.current();
+      if (current) {
+        Parse.User.logOut();
+        $scope.loggedIn = false;
+        $scope.userName = "";
+        $location.path('/login');
+      }
     };
 
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    var current = Parse.User.current();
+    if (current) {
+      $scope.loggedIn = true;
+      $scope.userName = current.getUsername();
+    }
+
+    $scope.$on("user-logged-in", function() {
+      var current = Parse.User.current();
+      if (current) {
+        $scope.loggedIn = true;
+        $scope.userName = current.getUsername();
+        $scope.$apply();
+      }
+    });
+
   });
