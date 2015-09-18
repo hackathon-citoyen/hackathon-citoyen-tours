@@ -22,10 +22,16 @@ angular.module('hackathonCitoyenApp', [
     return {
       // Add authorization token to headers
       request: function (config) {
-        config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+
+        var current = Parse.User.current();
+        if (current) {
+
         }
+
+        //config.headers = config.headers || {};
+        //if ($cookieStore.get('token')) {
+        //  config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+        //}
         return config;
       },
 

@@ -20,16 +20,12 @@ angular.module('hackathonCitoyenApp')
     ];
 
     $scope.isCollapsed = true;
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
       var current = Parse.User.current();
       if (current) {
         Parse.User.logOut();
-        $scope.loggedIn = false;
-        $scope.userName = "";
+        updateUser();
         $location.path('/login');
       }
     };
@@ -38,19 +34,26 @@ angular.module('hackathonCitoyenApp')
       return route === $location.path();
     };
 
-    var current = Parse.User.current();
-    if (current) {
-      $scope.loggedIn = true;
-      $scope.userName = current.getUsername();
-    }
-
-    $scope.$on("user-logged-in", function() {
+    function updateUser() {
       var current = Parse.User.current();
       if (current) {
         $scope.loggedIn = true;
+        $scope.isAdmin = current.get("isAdmin");
         $scope.userName = current.getUsername();
-        $scope.$apply();
+      } else {
+        $scope.loggedIn = false;
+        $scope.isAdmin = false;
+        $scope.userName = "";
       }
+    }
+
+    updateUser();
+
+    $scope.$on("user-logged-in", function() {
+      updateUser();
+    });
+    $scope.$on("user-logged-out", function() {
+      updateUser();
     });
 
   });

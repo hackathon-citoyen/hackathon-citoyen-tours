@@ -1,0 +1,81 @@
+<page-title>Liste des projets</page-title>
+
+<div class="col-md-12">
+</div>
+
+<div class="container ">
+  <div class="main">
+
+    <div ng-show=""projects.length>0">
+      Chargement en cours
+    </div>
+
+    <div  ng-show="!currentProject && projects.length>0">
+      <div ng-repeat="project in projects">
+        <div>
+          <h3>{{ project.name }}</h3>
+          <button class="btn-link" ng-click="setCurrentProject(project)">Voir la fiche projet</button>
+        </div>
+        <!--<div  ng-show="project._displayTechnical">-->
+          <!--<div  ng-bind-html="cleanText(project.technical)"></div>-->
+        <!--</div>-->
+        <div ng-show="project._displayDetails" >
+          <div>
+            <h4>Activité de l'association</h4>
+            <div ng-bind-html="cleanText(project.activity)"></div>
+          </div>
+          <div>
+            <h4>Description du projet</h4>
+            <div ng-bind-html="cleanText(project.project)"></div>
+          </div>
+
+          <div>
+            <h4>Apport pour l'association / le bien commun</h4>
+            <div ng-bind-html="cleanText(projectgain)"></div>
+          </div>
+
+          <div>
+            <h4>Usage actuel du numérique par l'association</h4>
+            <div ng-bind-html="cleanText(project.usage)"></div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <div ng-show="currentProject">
+      <button class="btn btn-default btn-inverse" ng-click="setCurrentProject(null)">Retour à la liste</button>
+      <h2>Détail du projet</h2>
+      <div>
+        <h3>{{ currentProject.name }}</h3>
+      </div>
+      <!--<div>-->
+        <!--<div ng-bind-html="cleanText(currentProject.activity)"></div>-->
+      <!--</div>-->
+      <div>
+        <div>
+          <h4>Activité de l'association</h4>
+          <div ng-bind-html="cleanText(currentProject.activity)"></div>
+        </div>
+        <div>
+          <h4>Description du projet</h4>
+          <div ng-bind-html="cleanText(currentProject.project)"></div>
+        </div>
+
+        <div>
+          <h4>Apport pour l'association / le bien commun</h4>
+          <div ng-bind-html="cleanText(currentProject.gain)"></div>
+        </div>
+
+        <div>
+          <h4>Usage actuel du numérique par l'association</h4>
+          <div ng-bind-html="cleanText(currentProject.usage)"></div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
