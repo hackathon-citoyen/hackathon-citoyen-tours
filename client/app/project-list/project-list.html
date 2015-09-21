@@ -3,78 +3,47 @@
 <div class="col-md-12">
 </div>
 
-<div class="container ">
-  <div class="main">
+<div class="container">
+
 
     <div ng-show=""projects.length>0">
       Chargement en cours
     </div>
 
     <div  ng-show="!currentProject && projects.length>0">
+
+
       <div ng-repeat="project in projects">
-        <div>
-          <h3>{{ project.name }}</h3>
-          <button class="btn-link" ng-click="setCurrentProject(project)">Voir la fiche projet</button>
-        </div>
-        <!--<div  ng-show="project._displayTechnical">-->
-          <!--<div  ng-bind-html="cleanText(project.technical)"></div>-->
-        <!--</div>-->
-        <div ng-show="project._displayDetails" >
-          <div>
-            <h4>Activité de l'association</h4>
-            <div ng-bind-html="cleanText(project.activity)"></div>
-          </div>
-          <div>
-            <h4>Description du projet</h4>
-            <div ng-bind-html="cleanText(project.project)"></div>
+        <div class="row">
+
+          <div class="project-list-image">
+            <h3 >
+              <img ng-if="project.logoUrl" src="{{project.logoUrl}}" style="max-height: 64px; max-width: 128px; border: 1px solid #DDDDDD;">
+              <img ng-if="!project.logoUrl" src="/assets/images/pas-de-logo.png" style="max-height: 64px; max-width: 128px; border: 1px solid #DDDDDD;">
+            </h3>
           </div>
 
-          <div>
-            <h4>Apport pour l'association / le bien commun</h4>
-            <div ng-bind-html="cleanText(projectgain)"></div>
+          <div class="project-list-content">
+            <div style="float: right;">
+              <button ng-if="project.developers" class="btn btn-primary"><i class="fa fa-user-times"></i> {{ project.developers }} Développeurs</button> <br>
+              <button ng-if="project.designers" class="btn btn-primary"><i class="fa fa-user-times"></i> {{ project.designers }} Artistes</button>
+            </div>
+            <div>
+              <h3>{{ project.name }}</h3>
+              <h4>{{ project.subTitle }}</h4>
+              <div ng-if="project.abstract" style="font-size: 1.2em; color: blue; font-weight: bold;">
+                Projet: {{ project.abstract }}
+              </div>
+              <a href="/project-details/{{ project.id }}">FICHE</a>
+              <a href="/join/{{ project.id }}">Rejoindre l'équipe</a>
+              <button class="btn-link" ng-click="setCurrentProject(project)">Voir la fiche projet</button>
+
+
+            </div>
+            <hr>
           </div>
 
-          <div>
-            <h4>Usage actuel du numérique par l'association</h4>
-            <div ng-bind-html="cleanText(project.usage)"></div>
-          </div>
         </div>
-        <hr>
-      </div>
-    </div>
-
-    <div ng-show="currentProject">
-      <button class="btn btn-default btn-inverse" ng-click="setCurrentProject(null)">Retour à la liste</button>
-      <h2>Détail du projet</h2>
-      <div>
-        <h3>{{ currentProject.name }}</h3>
-      </div>
-      <!--<div>-->
-        <!--<div ng-bind-html="cleanText(currentProject.activity)"></div>-->
-      <!--</div>-->
-      <div>
-        <div>
-          <h4>Activité de l'association</h4>
-          <div ng-bind-html="cleanText(currentProject.activity)"></div>
-        </div>
-        <div>
-          <h4>Description du projet</h4>
-          <div ng-bind-html="cleanText(currentProject.project)"></div>
-        </div>
-
-        <div>
-          <h4>Apport pour l'association / le bien commun</h4>
-          <div ng-bind-html="cleanText(currentProject.gain)"></div>
-        </div>
-
-        <div>
-          <h4>Usage actuel du numérique par l'association</h4>
-          <div ng-bind-html="cleanText(currentProject.usage)"></div>
-        </div>
-      </div>
-
-
-
     </div>
 
   </div>

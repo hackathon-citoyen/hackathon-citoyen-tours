@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hackathonCitoyenApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
       // 'title': 'Hackathon',
       'image': "/assets/images/logo-1.png",

@@ -20,7 +20,7 @@ angular.module('hackathonCitoyenApp')
             return prom;
           }
         })()
-          .fail(function(err){return new Parse.Promise().resolve();})
+          .fail(function(){return new Parse.Promise().resolve();})
           .then(function() {
             var user = new Parse.User();
             user.set("username", $scope.user.email);
@@ -29,21 +29,18 @@ angular.module('hackathonCitoyenApp')
             user.set("email", $scope.user.email);
 
             user.signUp(null, {
-              success: function(user) {
-                console.log("SIGN UP OK");
+              success: function() {
                 $scope.signUpDone = true;
                 $scope.$apply();
               },
               error: function(user, error) {
-                console.log("Error signing up");
-                // Show the error message somewhere and let the user try again.
                 switch(error.code) {
                   case 202:
-                    $scope.errors["name"] = error.message;
+                    $scope.errors.name = error.message;
                     $scope.errorInfo = "Le nom d'utilisateur ou l'email existe déjà, merci de le modifier";
                     break;
                   case 203:
-                    $scope.errors["email"] = error.message;
+                    $scope.errors.email = error.message;
                     $scope.errorInfo = "Le nom d'utilisateur ou l'email existe déjà, merci de le modifier";
                     break;
                   case 203:
@@ -52,34 +49,12 @@ angular.module('hackathonCitoyenApp')
                 }
                 $scope.processing = false;
                 $scope.$apply();
-                alert("Error: " + error.code + " " + error.message);
               }
             });
           })
         ;
 
-
         return;
-
-        Auth.createUser({
-          name: $scope.user.name,
-          email: $scope.user.email,
-          password: $scope.user.password
-        })
-        .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
-        })
-        .catch( function(err) {
-          err = err.data;
-          $scope.errors = {};
-
-          // Update validity of form fields that match the mongoose errors
-          angular.forEach(err.errors, function(error, field) {
-            form[field].$setValidity('mongoose', false);
-            $scope.errors[field] = error.message;
-          });
-        });
       }
     };
 

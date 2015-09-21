@@ -18,7 +18,7 @@ angular.module('hackathonCitoyenApp')
       if(form.$valid) {
         $scope.processing = true;
         Parse.User.logIn($scope.user.email, $scope.user.password, {})
-          .then(function(arg) {
+          .then(function() {
             $rootScope.$broadcast("user-logged-in");
             $location.path('/');
             $scope.$apply();
@@ -30,16 +30,16 @@ angular.module('hackathonCitoyenApp')
       }
     };
 
-    $scope.reset = function(form) {
+    $scope.reset = function() {
       $scope.submitted = true;
       Parse.User.requestPasswordReset($scope.user.email)
         .then(function() {
-          console.log("RESET OK");
+          $scope.submitted = false;
         })
-        .fail(function(err){
-          console.error("error:", err);
+        .fail(function(){
+          // console.error("error:", err);
         })
-
+      ;
     };
 
     $scope.loginOauth = function(provider) {

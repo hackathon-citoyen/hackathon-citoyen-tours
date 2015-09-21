@@ -13,10 +13,7 @@ angular.module('hackathonCitoyenApp')
       '</header>' +
       '</div>',
       restrict: 'E',
-      transclude:true,
-      link: function (scope, element, attrs) {
-        scope.title = "TEST";
-      }
+      transclude:true
     };
   });
 

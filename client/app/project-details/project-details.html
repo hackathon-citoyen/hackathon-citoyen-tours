@@ -1,0 +1,46 @@
+<div class="container ">
+  <div class="main">
+
+    <div ng-show="currentProject">
+      <a class="btn btn-default btn-inverse" href="/project-list">Retour à la liste</a>
+
+      <h2>Détail du projet</h2>
+
+      <div ng-if="currentProject.logoUrl">
+        <img src="{{currentProject.logoUrl}}" style="max-height: 256px;">
+      </div>
+      <div>
+        <h3>{{ currentProject.name }}</h3>
+      </div>
+      <!--<div>-->
+      <!--<div ng-bind-html="cleanText(currentProject.activity)"></div>-->
+      <!--</div>-->
+      <div>
+        <div>
+          <h4>Activité de l'association</h4>
+
+          <div ng-bind-html="cleanText(currentProject.activity)"></div>
+        </div>
+        <div>
+          <h4>Description du projet</h4>
+
+          <div ng-bind-html="cleanText(currentProject.project)"></div>
+        </div>
+
+        <div>
+          <h4>Apport pour l'association / le bien commun</h4>
+
+          <div ng-bind-html="cleanText(currentProject.gain)"></div>
+        </div>
+
+        <div>
+          <h4>Usage actuel du numérique par l'association</h4>
+
+          <div ng-bind-html="cleanText(currentProject.usage)"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
