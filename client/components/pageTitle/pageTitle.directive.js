@@ -4,10 +4,10 @@ angular.module('hackathonCitoyenApp')
   .directive('pageTitle', function () {
     return {
       template: '<div>' +
-      '<header class="logo-unit" id="banner">' +
+      '<header class="">' +
       '  <div class="container">' +
       '    <div class="main" style="text-align: left;">' +
-      '       <h1><img src="../../assets/images/logo-1.png" style="height: 92px; margin-right: 16px;"><ng-transclude></ng-transclude></h1>' +
+      '       <h2><img src="../../assets/images/logo-1.png" style="height: 32px; margin-right: 16px;"><ng-transclude></ng-transclude></h2>' +
       '    </div>' +
         '  </div>' +
       '</header>' +

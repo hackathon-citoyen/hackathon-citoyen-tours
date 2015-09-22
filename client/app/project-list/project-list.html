@@ -1,8 +1,5 @@
 <page-title>Liste des projets</page-title>
 
-<div class="col-md-12">
-</div>
-
 <div class="container">
 
 
@@ -10,40 +7,53 @@
       Chargement en cours
     </div>
 
-    <div  ng-show="!currentProject && projects.length>0">
+
+
+    <div  ng-show="!currentProject && projects.length>0" style="padding-top: 16px;">
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 16px; font-size: 1.2em;">
+          Voici la liste des projets pour le Hackathon Citoyen 2015. Pour participer, cliquer sur le bouton "Participer".
+        </div>
+      </div>
 
 
       <div ng-repeat="project in projects">
-        <div class="row">
 
-          <div class="project-list-image">
-            <h3 >
-              <img ng-if="project.logoUrl" src="{{project.logoUrl}}" style="max-height: 64px; max-width: 128px; border: 1px solid #DDDDDD;">
-              <img ng-if="!project.logoUrl" src="/assets/images/pas-de-logo.png" style="max-height: 64px; max-width: 128px; border: 1px solid #DDDDDD;">
-            </h3>
-          </div>
+        <project-card project="project" type="short" see-full="/project-details/{{ project.id }}"></project-card>
 
-          <div class="project-list-content">
-            <div style="float: right;">
-              <button ng-if="project.developers" class="btn btn-primary"><i class="fa fa-user-times"></i> {{ project.developers }} Développeurs</button> <br>
-              <button ng-if="project.designers" class="btn btn-primary"><i class="fa fa-user-times"></i> {{ project.designers }} Artistes</button>
-            </div>
-            <div>
-              <h3>{{ project.name }}</h3>
-              <h4>{{ project.subTitle }}</h4>
-              <div ng-if="project.abstract" style="font-size: 1.2em; color: blue; font-weight: bold;">
-                Projet: {{ project.abstract }}
-              </div>
-              <a href="/project-details/{{ project.id }}">FICHE</a>
-              <a href="/join/{{ project.id }}">Rejoindre l'équipe</a>
-              <button class="btn-link" ng-click="setCurrentProject(project)">Voir la fiche projet</button>
+        <!--<div class="panel row">-->
+
+          <!--<div class="project-list-image">-->
+            <!--<h3>-->
+              <!--<img ng-if="project.logoUrl" src="{{project.logoUrl}}" style="max-height: 64px; max-width: 128px; border: 0px solid #DDDDDD;">-->
+              <!--<img ng-if="!project.logoUrl" src="/assets/images/pas-de-logo.png" style="max-height: 64px; max-width: 128px; border: 0px solid #DDDDDD;">-->
+            <!--</h3>-->
+          <!--</div>-->
+
+          <!--<div class="project-list-content">-->
+            <!--<div style="float: right; text-align: right;">-->
+              <!--<div ng-if="project.developers" style="font-size: 1.4em;"><span class="label label-black">developpeurs</span><span class="label label-info"><i class="fa fa-user-times"></i> {{ project.developers }}</span></div>-->
+              <!--<div ng-if="project.designers" style="font-size: 1.4em;"><span class="label label-black">graphistes/designers</span><span class="label label-info"><i class="fa fa-user-times"></i> {{ project.designers }}</span></div>-->
+            <!--</div>-->
+            <!--<div>-->
+              <!--<h3>{{ project.name }}</h3>-->
+              <!--<h4>{{ project.subTitle }}</h4>-->
+              <!--<div ng-if="project.abstract" style="font-size: 1.2em; color: blue; font-weight: bold;">-->
+                <!--Projet: {{ project.abstract }}-->
+              <!--</div>-->
+              <!--<a class="btn btn-primary" href="/project-details/{{ project.id }}"> <i class="fa fa-arrow-circle-o-right"></i> Voir la fiche complète</a>-->
+              <!--<a class="btn btn-success" href="/project-details/{{ project.id }}"> <i class="fa fa-arrow-circle-o-right"></i> Participer </a>-->
+            <!--</div>-->
+            <!--<div style="margin-bottom: 16px;">-->
+              <!--<span class="badge" style="margin-right: 0.2em;" ng-repeat="tag in project.tags">{{tag}}</span> &nbsp;-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
 
 
-            </div>
-            <hr>
-          </div>
 
-        </div>
     </div>
 
   </div>

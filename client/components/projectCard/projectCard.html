@@ -1,0 +1,61 @@
+<div class="panel row">
+
+  <div class="project-list-image">
+    <h3>
+      <img ng-if="project.logoUrl" src="{{project.logoUrl}}" style="max-height: 64px; max-width: 128px; border: 0px solid #DDDDDD;">
+      <img ng-if="!project.logoUrl" src="/assets/images/pas-de-logo.png" style="max-height: 64px; max-width: 128px; border: 0px solid #DDDDDD;">
+    </h3>
+  </div>
+
+  <div class="project-list-content">
+    <div>
+      <h3>{{ project.name }}</h3>
+      <h4>{{ project.subTitle }}</h4>
+      <div ng-if="project.abstract" style="font-size: 1.2em; color: blue; font-weight: bold;">
+        Projet: {{ project.abstract }}
+      </div>
+
+      <div style="float: right; text-align: right; margin: 8px 0px 8px 16px;">
+        <div ng-if="project.developers" style="font-size: 1.4em;"><span class="label label-black">developpeurs</span><span class="label label-info"><i class="fa fa-user-times"></i> {{ project.developers }}</span></div>
+        <div ng-if="project.designers" style="font-size: 1.4em;"><span class="label label-black">graphistes/designers</span><span class="label label-info"><i class="fa fa-user-times"></i> {{ project.designers }}</span></div>
+      </div>
+
+      <div>
+        <a ng-if="type=='short' " class="btn btn-primary" href="{{ seeFull }}"> <i class="fa fa-arrow-circle-o-right"></i> Voir la fiche complète</a>
+
+      </div>
+      <a class="btn btn-success" href="/project-details/{{ project.id }}"> <i class="fa fa-check"></i> Participer </a>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <span class="badge" style="margin-right: 0.2em;" ng-repeat="tag in project.tags">{{tag}}</span> &nbsp;
+    </div>
+
+    <div ng-if=" type=='full' ">
+      <hr>
+      <div>
+        <h3>Activité de l'association</h3>
+
+        <div ng-bind-html="cleanText(project.activity)"></div>
+      </div>
+      <div>
+        <h3>Description du projet</h3>
+
+        <div ng-bind-html="cleanText(project.project)"></div>
+      </div>
+
+      <div>
+        <h3>Apport pour l'association / le bien commun</h3>
+
+        <div ng-bind-html="cleanText(project.gain)"></div>
+      </div>
+
+      <div>
+        <h3>Usage actuel du numérique par l'association</h3>
+
+        <div ng-bind-html="cleanText(project.usage)"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

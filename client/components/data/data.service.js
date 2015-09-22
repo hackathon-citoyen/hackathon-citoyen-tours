@@ -33,6 +33,10 @@ angular.module('hackathonCitoyenApp')
                 .forEach(function (key) {
                   obj[key] = pobj.get(key);
                 });
+              var tags = pobj.get('tags');
+              obj.tags = (tags||"").split(',').map(function(s) {
+                return jQuery.trim(s);
+              });
               return obj;
             });
             cache.date = new Date().getTime();
