@@ -12,8 +12,6 @@ angular.module('hackathonCitoyenApp')
       restrict: 'E',
       controller: function($scope, htmlUtils) {
         $scope.cleanText = htmlUtils.showNewLinesInHtml;
-      },
-      link: function (scope, element, attrs) {
       }
     };
   });
