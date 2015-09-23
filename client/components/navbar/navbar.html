@@ -17,7 +17,7 @@
         <li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" ng-if="false">
         <li ng-hide="loggedIn" ng-class="{active: isActive('/signup')}"><a href="/signup">Inscription</a></li>
         <li ng-hide="loggedIn" ng-class="{active: isActive('/login')}"><a href="/login">Connexion</a></li>
         <li ng-show="loggedIn"><a href="#">{{userName}}</a></li>

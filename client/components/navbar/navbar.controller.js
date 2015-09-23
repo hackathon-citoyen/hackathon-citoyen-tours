@@ -15,7 +15,11 @@ angular.module('hackathonCitoyenApp')
     },{
       'title': 'Proposer un projet',
       'link': '/dossier'
-    }
+    },
+      {
+        title: "Liste de projets",
+        link: "/project-list"
+      }
 
     ];
 
