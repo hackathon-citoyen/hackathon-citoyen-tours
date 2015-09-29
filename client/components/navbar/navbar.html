@@ -12,7 +12,7 @@
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-          <a ng-href="{{item.link}}"><img ng-if="item.image" src="{{item.image}}" style="height:24px;"><span ng-if="item.title">{{item.title}}</span></a>
+          <a ng-href="{{item.link}}"><img ng-if="item.image" src="{{item.image}}" style="height:24px;"><span style=" {{ item.highlight?'color: #FFFF44;':'' }}" ng-if="item.title">{{item.title}}</span></a>
         </li>
         <li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
